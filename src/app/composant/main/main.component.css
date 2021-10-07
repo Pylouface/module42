@@ -1,0 +1,21 @@
+.exercice{
+    background-color: #2F2F2F;
+    color: white;
+    width: 400px;
+    height: 400px;
+}
+
+.enteteExo{
+    background-color: teal;
+    width: 400px;
+    color: white;
+    text-align: center;
+    font-weight: bold;
+}
+
+.correction{
+    background-color: #2F2F2F;
+    color: white;
+    width: 400px;
+    height: 460px;
+}

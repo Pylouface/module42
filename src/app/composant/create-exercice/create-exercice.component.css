@@ -1,0 +1,52 @@
+/* permet d'afficher 2 app-categorie-selecteur par ligne */
+.serv {
+    display: flex;
+    flex-wrap: wrap;
+    padding-left: 0;
+  }  
+  .serv app-categorie-selecteur {
+    list-style: none;
+    flex: 0 0 50.0%;
+    text-transform: capitalize;
+    padding: 1px;
+  }
+
+  .exercice{
+    background-color: #2F2F2F;
+    color: white;
+    width: 400px;
+    height: 400px;
+}
+
+.enteteExo{
+    background-color: teal;
+    width: 400px;
+    color: white;
+    text-align: center;
+    font-weight: bold;
+}
+
+.correction{
+    background-color: #2F2F2F;
+    color: white;
+    width: 400px;
+    height: 460px;
+}
+
+.titre{
+  background-color: teal;
+  color: white;
+  font-weight: bold;
+  margin: 2px;
+}
+
+.separateur{
+  margin-bottom: 35px;
+  margin-top: 20px;
+  color:white;
+  background-color: #2F2F2F;
+  width: 100%;  
+  text-align: center;
+  font-weight: bold;
+}
+

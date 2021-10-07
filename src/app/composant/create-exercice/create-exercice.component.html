@@ -1,0 +1,117 @@
+<div class="container">
+    <div class="row">
+        <div class="col-12 separateur">Séléction des thèmes</div>
+    </div>
+    <div class="row">
+        <div class="col-1">
+            <button type="button" class="btn btn-success" (click)="createNewTheme()">+</button>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col">
+            <div class="serv">
+                <ng-container *ngFor="let myListeTheme of listeDeListeTheme; let i = index">
+                    <!--    
+                        Le double databinding du parent à l'enfant ce fait automatiquement via @input de l'enfant
+                        app-categorie-selecteur est le nom du composant à appeler
+                        @output
+                        (deleteOutputEmitter) est le nom de l'emitter dans le composant enfant
+                        deleteTheme est le nom de la fonction à appeler dans ce composant
+                        $event représente la valeur passé en paramètre, c'est toujours $event
+                        @input
+                        [indexFromParent] représente le nom de l'input dans le composant enfant
+                        i représente la valeur de l'index du *ngfor
+                        [listeTheme]  représente le nom de l'input dans le composant enfant
+                        myListeTheme représente la liste de theme courante à passer à l'enfant
+                    -->
+                    <app-categorie-selecteur (deleteOutputEmitter)="deleteTheme($event)" [indexFromParent]="i" [listeTheme]="myListeTheme"></app-categorie-selecteur>
+                </ng-container>
+            </div>
+        </div>
+    </div>
+    <!--séparateur création d'exercice-->
+    <div class="row">
+        <div class="col-12 separateur">Contenu de l'exercice</div>
+    </div>
+    <!-- editeur de l'exercice-->
+    <!--ennoncé/réponse-->
+    <div class="row">
+        <div class="col">
+            <div class="input-group mb-3">
+                <span class="input-group-text" id="ennonce">Ennoncé</span>
+                <input type="text" [(ngModel)]='exoEnCours.consigne' class="form-control" placeholder="Ennoncé de l'exercice" aria-label="ennonce" aria-describedby="ennonce">
+            </div>
+        </div>
+        <div class="col">
+            <div class="input-group mb-3">
+                <span class="input-group-text" id="reponse">Réponse attendu</span>
+                <input type="text" [(ngModel)]='exoEnCours.reponseAttendu' class="form-control" placeholder="Réponse" aria-label="reponse" aria-describedby="reponse">
+            </div>
+        </div>
+    </div>
+    <!--exercice/correction - Titre--> 
+    <div class="row">
+        <div class="col titre text-center">
+            Exercice
+        </div>
+        <div class="col titre text-center">
+            Correction
+        </div>
+    </div>
+    <!--exercice/correction-->
+    <div class="row">
+        <!--question-->
+        <div class="col">
+            <ejs-richtexteditor id='question'  [toolbarSettings]='tools' [(ngModel)]='exoEnCours.exercice' [(value)]='exoEnCours.exercice'>
+                <ng-template #valueTemplate>
+                    Contenu par défaut
+                </ng-template>
+            </ejs-richtexteditor>
+        </div>
+        <!--correction-->
+        <div class="col">
+            <ejs-richtexteditor id='correction'  [toolbarSettings]='tools' [(ngModel)]='exoEnCours.correction' [(value)]='exoEnCours.correction'>
+                <ng-template #valueTemplate>
+                    Contenu par défaut
+                </ng-template>
+            </ejs-richtexteditor>
+        </div>
+    </div>
+    <!--spérarateur rendu-->
+    <div class="row">
+        <div class="col-12 separateur">Rendu</div>
+    </div>
+    <!-- Rendu tel qu'il sera dans le main-->    
+    <div class="row">
+        <div class="col-2">
+          <div>
+              Thème abordé :<br>
+              <strong>js niveau 1</strong><br>
+              <ul>
+                  <li>js - tableau -lvl1</li>
+                  <li>js - tableau Selection -lvl1
+                  </li>
+              </ul>            
+          </div>
+        </div>
+        <div class="col-5">
+            <div class="p-3 border enteteExo" [innerHTML]="exoEnCours.consigne"></div>
+            <div class="p-3 border exercice" [innerHTML]="exoEnCours.exercice"></div>
+        </div>
+        <div class="col-5">
+          <div class="p-3 border correction" [innerHTML]="exoEnCours.correction"></div>
+        </div>
+      </div>
+      <!-- bouton de validation -->
+      <div class="row">
+        <div class="col-12 text-center">
+            <button type="button" class="btn btn-success">Créer l'exercice</button>
+        </div>
+      </div>
+</div>
+
+
+
+
+
+    

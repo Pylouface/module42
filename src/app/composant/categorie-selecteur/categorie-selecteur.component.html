@@ -1,0 +1,28 @@
+<div class="container">
+    <div class="row">
+        <div class="col">
+            <!--Dans le select on bind la valeur de la propriété selectedIndex à l'index de l'option selectionné-->
+            <select class="form-select" [(ngModel)]="selectedIndex" (change)="listeDeroulanteOnChange()">
+                <!--ici pas oublier de bind la [value] avec l'index en cours du *ngfor + déclaration de l'index dans le *ngfor-->
+                <option [value]="indexOfElement" *ngFor="let my_theme of listeTheme; let indexOfElement=index">{{my_theme.description}}</option>
+            </select>
+        </div>
+        <!-- Depuis angular on peux définir la valeur des attributs html avec la syntaxe [attr."nom de l'attribut"]="valeur de l'attribut"-->
+        <!-- Ici on a besoin d'avoir une ID unique pour pouvoir faire fonctionner le collapse, on attribut donc une id unique créé dans le fichier .ts du composant-->
+        <div class="col" data-bs-toggle="collapse" [attr.href]="uniqueIDWithTag" aria-expanded="true" [attr.aria-controls]="uniqueID"></div>
+        <div class="col croixRouge" data-bs-toggle="collapse" [attr.href]="uniqueIDWithTag" aria-expanded="true" [attr.aria-controls]="uniqueID">
+            <button type="button" class="btn btn-danger" (click)="deleteMe()">X</button>
+        </div>
+    </div>
+    <!-- Ici on ajouter l'ID unique généré dans le composant (pour le collaspe)-->
+    <div class="row collapse show" id="{{uniqueID}}">
+        <div class="serv">
+            <ul>
+                <li *ngFor="let myCategorie of listeTheme[selectedIndex].categorie_liste">
+                    <input type="checkbox" name="tableau" [checked]=myCategorie.selected [(ngModel)]="myCategorie.selected" [ngModelOptions]="{standalone: true}"/>
+                    <label for="tableau">{{myCategorie.description}}</label>
+                </li>
+            </ul>
+        </div>
+    </div>
+</div>

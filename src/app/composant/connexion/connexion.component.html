@@ -1,0 +1,12 @@
+<form [formGroup]="checkoutForm" (ngSubmit)="onSubmit()">
+    <div class="mb-3">
+      <label for="identifiant" class="form-label">Identifiant</label>
+      <input type="text" class="form-control" id="identifiant" aria-describedby="emailIdentifiant" formControlName="identifiant" required>
+      <div id="identifiantHelp" class="form-text">A obtenir avec le formateur</div>
+    </div>
+    <div class="mb-3">
+      <label for="motDePasse" class="form-label">Mot de passe</label>
+      <input type="password" class="form-control" id="motDePasse" formControlName="motDePasse" required>
+    </div>    
+    <button type="submit" class="btn btn-primary">Connexion</button>
+</form>

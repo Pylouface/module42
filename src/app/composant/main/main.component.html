@@ -1,0 +1,35 @@
+<div class="container">    
+    <div class="row">
+      <div class="col-2">
+        <div>
+            Thème abordé :<br>
+            <strong>js niveau 1</strong><br>
+            <ul>
+                <li>js - tableau -lvl1</li>
+                <li>js - tableau Selection -lvl1
+                </li>
+            </ul>            
+        </div>
+      </div>
+      <div class="col-5">
+          <div class="p-3 border enteteExo" [innerHTML]="exoEnCours.consigne"></div>
+          <div class="p-3 border exercice" [innerHTML]="exoEnCours.exercice"></div>
+      </div>
+      <div class="col-5">
+        <div class="p-3 border correction" [innerHTML]="exoEnCours.correction"></div>
+      </div>
+    </div>
+  
+    <div class="row">
+        <div class="col-2"></div>
+        <div class="col-5">
+            <label for="reponse">Réponse</label>
+            <!-- ngmodel permet de faire du double databinding vers la variable userreponse déclaré dans le composant-->
+            <input id="reponse" [value]="userReponse" [(ngModel)]="userReponse"/>
+            <button type="button" class="btn btn-success" (click)="valideReponse()">Valider</button>
+        </div>
+        <div class="col-5">
+            <button type="button" class="btn btn-success">Exercice suivant</button>
+        </div>
+    </div>
+  </div>
